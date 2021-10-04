@@ -53,16 +53,16 @@ Backend Service for the ManageBlue App.
 - `/pass/:id` (PUT) - Update user password by ID
 - `/:id` (DELETE) - Delete user by ID
 
-### `/project`
+### `/projects`
 - `/:id` (GET) - Return project by ID
-- `/` (GET) - Return all projects (matching parameters)
+- `/` (GET) - Return all projects (matching query parameters)
 - `/` (POST) - Create new project
 - `/:id` (PUT) - Update project by ID
 - `/:id` (DELETE) - Delete project by ID
 
-### `/task`
+### `/tasks`
 - `/:id` (GET) - Return task by ID
-- `/` (GET) - Return all tasks (matching parameters)
+- `/` (GET) - Return all tasks (matching query parameters)
 - `/` (POST) - Create new task
 - `/:id` (PUT) - Update task by ID
 - `/:id` (DELETE) - Delete task by ID
