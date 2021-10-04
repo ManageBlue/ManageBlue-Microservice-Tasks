@@ -1,0 +1,30 @@
+{
+  "name": "manageblue-backend",
+  "version": "1.0.0",
+  "description": "Backend Service for the ManageBlue App.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ManageBlue/ManageBlue-Backend.git"
+  },
+  "author": "Lan Sovinc & Matej Horvat",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ManageBlue/ManageBlue-Backend/issues"
+  },
+  "homepage": "https://github.com/ManageBlue/ManageBlue-Backend#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongo": "^0.1.0",
+    "mongod": "^2.0.0",
+    "mongoose": "^6.0.8",
+    "passport": "^0.5.0",
+    "passport-local": "^1.0.0"
+  }
+}
