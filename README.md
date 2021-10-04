@@ -10,27 +10,33 @@ Backend Service for the ManageBlue App.
 - firstName (String 32)*
 - lastName (String 32)*
 - email (String 128)*
+- auto: createdAt(Date)
+- auto: updatedAt(Date)
 
 **Token:**
 - token (String)*
 - date (Date)*
 
 **Project:**
-- title (String 32)*
+- title (String 64)*
 - description (String 1024)*
-- isActive (Bool)*
+- active (Bool)*
 - members ([User])*
+- auto: createdAt(Date)
+- auto: updatedAt(Date)
 
 **Task:**
-- title (String 32)*
+- title (String 64)*
 - note (String 1024)*
 - hours (Number)*
+- hourlyRate (Number)*
 - project (Project)*
 - date (Date)*
 - contributor (User)*
-- timestamp(Date)*
 - completed (Bool)*
 - paid (Bool)*
+- auto: createdAt(Date)
+- auto: updatedAt(Date)
 
 ## API (`/api`)
 
