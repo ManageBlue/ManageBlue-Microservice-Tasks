@@ -6,6 +6,7 @@ const tasks = require('../services/tasks');
 // Return project with requested id
 exports.returnByID = (req, res) => {
     Project.findById(req.params.id)
+        .populate("members", "firstName lastName")
         .then(project => {
             if (!project) {
                 return res.status(404).json({
@@ -28,7 +29,7 @@ exports.return = (req, res) => {
 
     // Create filter object
     let filterObject = {}
-    // Add query parameters to filter object
+    // Add query parameters to filter object todo: verjetno problem
     req.query.active && (filterObject["active"] = req.query.active)
     req.query.members && (filterObject["members"] = req.query.members)
 
@@ -38,6 +39,7 @@ exports.return = (req, res) => {
         .sort({updatedAt: -1, _id: -1})
         .skip(16 * (req.query.page || 0))
         .limit(16)
+        .populate("members", "firstName lastName")
         .then(projects => {
             if (!projects) {
                 return res.status(404).json({
@@ -60,7 +62,7 @@ exports.return = (req, res) => {
 exports.create = (req, res) => {
 
     // Validate request
-    if (!req.body.title || !req.body.description || !req.body.active || !req.body.members) {
+    if (!req.body.title || !req.body.description || !req.body.members) {
         return res.status(400).json({message: "Required data must be present"});
     }
 
@@ -144,7 +146,7 @@ exports.delete = (req, res) => {
 exports.update = (req, res) => {
 
     // Validate request
-    if (!req.body.title || !req.body.description || !req.body.active || !req.body.members) {
+    if (!req.body.title || !req.body.description || !req.body.members) {
         return res.status(400).json({message: "Required data must be present"});
     }
 

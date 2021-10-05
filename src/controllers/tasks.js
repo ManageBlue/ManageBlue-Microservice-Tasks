@@ -5,6 +5,7 @@ const Task = mongoose.model('Task');
 // Return task with requested id
 exports.returnByID = (req, res) => {
     Task.findById(req.params.id)
+        .populate([{path: "contributor", select: "firstName lastName"}, {path: "project", select: "title"}])
         .then(task => {
             if (!task) {
                 return res.status(404).json({
@@ -27,7 +28,7 @@ exports.return = (req, res) => {
 
     // Create filter object
     let filterObject = {}
-    // Add query parameters to filter object
+    // Add query parameters to filter object todo: verjetno problem completed in paid
     req.query.project && (filterObject["project"] = req.query.project)
     req.query.contributor && (filterObject["contributor"] = req.query.contributor)
     req.query.completed && (filterObject["completed"] = req.query.completed)
@@ -39,6 +40,7 @@ exports.return = (req, res) => {
         .sort({date: -1, _id: -1})
         .skip(16 * (req.query.page || 0))
         .limit(16)
+        .populate([{path: "contributor", select: "firstName lastName"}, {path: "project", select: "title"}])
         .then(tasks => {
             if (!tasks) {
                 return res.status(404).json({
@@ -61,7 +63,7 @@ exports.return = (req, res) => {
 exports.create = (req, res) => {
 
     // Validate request
-    if (!req.body.title || !req.body.note || !req.body.hours || !req.body.hourlyRate || !req.body.project || !req.body.date || !req.body.contributor || !req.body.completed || !req.body.paid) {
+    if (!req.body.title || !req.body.note || !req.body.hours || !req.body.hourlyRate || !req.body.project || !req.body.date || !req.body.contributor) {
         return res.status(400).json({message: "Required data must be present"});
     }
 
@@ -174,7 +176,7 @@ exports.delete = (req, res) => {
 exports.update = (req, res) => {
 
     // Validate request
-    if (!req.body.title || !req.body.note || !req.body.hours || !req.body.hourlyRate || !req.body.project || !req.body.date || !req.body.contributor || !req.body.completed || !req.body.paid) {
+    if (!req.body.title || !req.body.note || !req.body.hours || !req.body.hourlyRate || !req.body.project || !req.body.date || !req.body.contributor) {
         return res.status(400).json({message: "Required data must be present"});
     }
 

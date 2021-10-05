@@ -16,7 +16,7 @@ module.exports = authenticationRouter => {
 
 
     // Register new user
-    router.post("/register", [authJWT.verifyTokenWhitelist, registerCheck.checkUniqueUsernameEmail], authenticationController.register);
+    router.post("/register", [/*authJWT.verifyTokenWhitelist,*/ registerCheck.checkUniqueUsernameEmail], authenticationController.register);
 
     // Login user
     router.post("/login", authenticationController.login);
