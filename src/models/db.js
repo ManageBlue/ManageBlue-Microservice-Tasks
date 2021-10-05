@@ -6,10 +6,12 @@ let dbURI = process.env.MONGODB_CLOUD_URI || 'mongodb://localhost/ManageBlue';
 // Connect to the database
 mongoose.connect(dbURI, {
     useNewUrlParser: true,
-    useCreateIndex: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false,
-}).catch(() => {
+    // TODO: check
+    // useCreateIndex: true,
+    // useUnifiedTopology: true,
+    // useFindAndModify: false,
+}).catch((err) => {
+    console.log(err);
     console.log('error connecting to the database');
     process.exit();
 });
