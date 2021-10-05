@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Project = mongoose.model('Project');
+const tasks = require('../services/tasks');
 
 
 // Return project with requested id
@@ -117,7 +118,17 @@ exports.delete = (req, res) => {
                     message: `No project with selected ID!`
                 });
             }
-            // TODO: delete tasks
+            // Delete tasks
+            try {
+                await tasks.deleteProjectTasks(req.params.id);
+            }
+            catch (error){
+                return res.status(500).send({
+                    message: error.message || "An error occurred while deleting project tasks!"
+                });
+
+            }
+
             res.send({message: "Project deleted!"});
 
         })
