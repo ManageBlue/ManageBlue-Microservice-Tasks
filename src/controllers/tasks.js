@@ -36,23 +36,35 @@ exports.return = (req, res) => {
 
     // TODO: Make query more efficient (should have)
 
-    Task.find(filterObject, 'title note hours hourlyRate project date contributor completed paid createdAt updatedAt')
-        .sort({date: -1, _id: -1})
-        .skip(16 * (req.query.page || 0))
-        .limit(16)
-        .populate([{path: "contributor", select: "firstName lastName"}, {path: "project", select: "title"}])
-        .then(tasks => {
-            if (!tasks) {
-                return res.status(404).json({
-                    message: "No task with selected parameters!"
-                });
-            }
+    Task.countDocuments(filterObject).then(count => {
 
-            res.status(200).json(tasks);
-        })
+        Task.find(filterObject, 'title note hours hourlyRate project date contributor completed paid createdAt updatedAt')
+            .sort({date: -1, _id: -1})
+            .skip(16 * (req.query.page || 0))
+            .limit(16)
+            .populate([{path: "contributor", select: "firstName lastName"}, {path: "project", select: "title"}])
+            .then(tasks => {
+                if (!tasks) {
+                    return res.status(404).json({
+                        message: "No task with selected parameters!"
+                    });
+                }
+
+                let response = {
+                    'tasks': tasks,
+                    'count': count
+                }
+                res.status(200).json(response);
+            })
+            .catch(error => {
+                res.status(500).send({
+                    message: error.message || "An error occurred while fetching tasks!"
+                });
+            });
+    })
         .catch(error => {
             res.status(500).send({
-                message: error.message || "An error occurred while fetching tasks!"
+                message: error.message || "An error occurred while fetching properties!"
             });
         });
 };
@@ -129,13 +141,13 @@ exports.create = (req, res) => {
     let newTask = new Task({
         title: req.body.title,
         note: req.body.note,
-        hours : req.body.hours,
-        hourlyRate : req.body.hourlyRate,
-        project : req.body.project,
-        date : req.body.date,
-        contributor : req.body.contributor,
-        completed : req.body.completed,
-        paid : req.body.paid
+        hours: req.body.hours,
+        hourlyRate: req.body.hourlyRate,
+        project: req.body.project,
+        date: req.body.date,
+        contributor: req.body.contributor,
+        completed: req.body.completed,
+        paid: req.body.paid
     });
 
     // Save new task in the database
