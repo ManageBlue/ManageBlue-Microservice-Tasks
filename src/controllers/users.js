@@ -2,6 +2,25 @@ const mongoose = require('mongoose');
 const User = mongoose.model('User');
 
 
+// Return calling user data
+exports.returnMe = (req, res) => {
+    User.findById(req.params.tokenId, 'username firstName lastName email')
+        .then(user => {
+            if (!user) {
+                return res.status(404).json({
+                    message: "No user with selected ID!"
+                });
+            }
+            res.status(200).json(user);
+        })
+        .catch(error => {
+            res.status(500).send({
+                message: error.message || "An error occurred while fetching user!"
+            });
+        });
+};
+//----------------------------------------------------------------------------------------------------------------------
+
 // Return a user with requested id
 exports.returnByID = (req, res) => {
     User.findById(req.params.id, 'username firstName lastName email')

@@ -14,8 +14,11 @@ module.exports = usersRouter => {
     });
 
 
+    // Return calling user data
+    router.get("/me", [authJWT.verifyTokenWhitelist], usersController.returnMe);
+
     // Return user by ID
-    router.get("/:id", usersController.returnByID);
+    router.get("/:id", [authJWT.verifyTokenWhitelist], usersController.returnByID);
 
     // Return all users
     router.get("/", [authJWT.verifyTokenWhitelist], usersController.returnAll);
