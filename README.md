@@ -16,7 +16,7 @@ Backend Service for the ManageBlue App.
 - auto: createdAt(Date)
 - auto: updatedAt(Date)
 
-## API (`/api`)
+## API (`/api/version`)
 
 ### `/tasks`
 - `/:id` (GET) - Return task by ID
