@@ -23,6 +23,6 @@
     "jsonwebtoken": "^8.5.1",
     "mongo": "^0.1.0",
     "mongod": "^2.0.0",
-    "mongoose": "^6.0.8",
+    "mongoose": "^6.0.8"
   }
 }
