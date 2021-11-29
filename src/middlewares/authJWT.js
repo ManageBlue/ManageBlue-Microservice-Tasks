@@ -1,4 +1,4 @@
-const jwt = require("jsonwebtoken");
+/*const jwt = require("jsonwebtoken");
 const config = require("../config/auth");
 const mongoose = require('mongoose');
 const Token = mongoose.model('Token');
@@ -48,4 +48,4 @@ verifyTokenWhitelist = (req, res, next) => {
 const authJwt = {
     verifyTokenWhitelist: verifyTokenWhitelist
 };
-module.exports = authJwt;
+module.exports = authJwt;*/

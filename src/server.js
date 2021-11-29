@@ -25,6 +25,7 @@ server.use(bodyParser.urlencoded({ extended: true }));
 
 require("./models/db");
 require("./routes/tasks")(server);
+require("./routes/healthcheck")(server);
 
 server.get("/", (req, res) => {
     res.json({ message: "Server is running!" });
