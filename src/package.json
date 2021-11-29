@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "description": "Backend Service for the ManageBlue App.",
   "main": "server.js",
-  "scripts": {
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ManageBlue/ManageBlue-Backend.git"
@@ -22,6 +21,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongo": "^0.1.0",
     "mongod": "^2.0.0",
-    "mongoose": "^6.0.8"
+    "mongoose": "^6.0.8",
+    "prom-client": "^14.0.1"
   }
 }

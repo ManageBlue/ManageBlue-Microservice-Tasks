@@ -20,12 +20,14 @@ server.use(bodyParser.json());
 
 // parse requests of content-type - application/x-www-form-urlencoded
 server.use(bodyParser.urlencoded({ extended: true }));
+
 //----------------------------------------------------------------------------------------------------------------------
 
 
 require("./models/db");
 require("./routes/tasks")(server);
 require("./routes/healthcheck")(server);
+require("./routes/metrics")(server);
 
 server.get("/", (req, res) => {
     res.json({ message: "Server is running!" });
