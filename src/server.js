@@ -2,9 +2,11 @@ const express = require('express');
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const server = express();
+const config = require('./config/config')
+
 // TODO: env ali config
-const port = process.env.PORT || 5000;
-const url = process.env.URL || "http://localhost";
+const port = config.port
+const url = config.url
 //----------------------------------------------------------------------------------------------------------------------
 
 

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
+const config = require('../config/config')
 
-// TODO: env ali config?
-let dbURI = process.env.MONGODB_CLOUD_URI || 'mongodb://localhost/ManageBlue';
+let dbURI = config.dbURI
 
 // Connect to the database
 mongoose.connect(dbURI, {

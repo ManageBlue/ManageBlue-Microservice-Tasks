@@ -26,13 +26,11 @@ exports.health = (req, res) => {
             {
                 name: 'MongoDB connection',
                 outcome: mongoStatus === 200 ? 'UP' : 'DOWN',
-                status: mongoStatus,
                 reason: mongoStatus === 200 ? '' : 'Not connected'
             },
             {
                 name: 'Simulation',
                 outcome: simulationStatus === 200 ? 'UP' : 'DOWN',
-                status: simulationStatus,
                 reason: simulationStatus === 200 ? '' : 'Simulating health problem'
             }
         ]
