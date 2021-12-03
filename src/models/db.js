@@ -4,7 +4,7 @@ const config = require('../config/config')
 let dbURI = config.dbURI
 
 // Connect to the database
-mongoose.connect(dbURI, {
+/*mongoose.connect(dbURI, {
     useNewUrlParser: true,
     // TODO: check
     // useCreateIndex: true,
@@ -14,7 +14,7 @@ mongoose.connect(dbURI, {
     console.log(err);
     console.log('error connecting to the database');
     process.exit();
-});
+});*/
 // Database state debug messages
 mongoose.connection.on('connected', () => {
     console.log(`Mongoose connected to ${dbURI}.`);
