@@ -1,9 +1,9 @@
 const router = require("express").Router();
 const metricsController = require("../controllers/metrics");
 
-module.exports = tasksRouter => {
+module.exports = metricsRouter => {
 
-    tasksRouter.use(function (req, res, next) {
+    metricsRouter.use(function (req, res, next) {
         res.header(
             "Access-Control-Allow-Headers",
             "x-access-token, Origin, Content-Type, Accept"
@@ -12,7 +12,7 @@ module.exports = tasksRouter => {
     });
 
     // Return metrics
-    router.get("/", metricsController.return)  
-    
-    tasksRouter.use('/metrics', router);
+    router.get("/", metricsController.return)
+
+    metricsRouter.use('/metrics', router);
 };
