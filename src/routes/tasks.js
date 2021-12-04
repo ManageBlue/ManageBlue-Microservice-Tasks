@@ -30,7 +30,5 @@ module.exports = tasksRouter => {
     // Delete tasks by project ID
     router.delete("/deleteProject/:id", /*[authJWT.verifyTokenWhitelist],*/ tasksController.deleteProjectTasks);
 
-   
-
     tasksRouter.use('/api/v1/tasks', router);
 };
