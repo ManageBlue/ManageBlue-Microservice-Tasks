@@ -288,3 +288,23 @@ exports.update = (req, res) => {
         });
 };
 //----------------------------------------------------------------------------------------------------------------------
+
+
+// Delete all tasks that belong to the project with the requested id
+exports.deleteProjectTasks = (req, res) => {
+    Task.deleteMany({project: req.params.id})
+        .then(tasks => {
+            if (tasks.deletedCount === 0) {
+                return res.status(404).send({
+                    message: `No tasks with selected project ID!`
+                });
+            }
+            res.send({message: "Tasks deleted!"});
+        })
+        .catch(error => {
+            res.status(500).send({
+                message: error.message || "An error occurred while deleting project tasks!"
+            });
+        })
+
+}
