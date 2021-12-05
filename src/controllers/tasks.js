@@ -5,7 +5,7 @@ const Task = mongoose.model('Task');
 // Return task with requested id
 exports.returnByID = (req, res) => {
     Task.findById(req.params.id)
-        .populate([{path: "contributor", select: "firstName lastName"}, {path: "project", select: "title"}])
+        //.populate([{path: "contributor", select: "firstName lastName"}, {path: "project", select: "title"}])
         .then(task => {
             if (!task) {
                 return res.status(404).json({
@@ -42,7 +42,7 @@ exports.return = (req, res) => {
             .sort({date: -1, _id: -1})
             .skip(16 * (req.query.page || 0))
             .limit(16)
-            .populate([{path: "contributor", select: "firstName lastName"}, {path: "project", select: "title"}])
+            //.populate([{path: "contributor", select: "firstName lastName"}, {path: "project", select: "title"}])
             .then(tasks => {
                 if (!tasks) {
                     return res.status(404).json({
