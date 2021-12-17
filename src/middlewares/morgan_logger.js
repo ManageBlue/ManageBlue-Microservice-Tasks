@@ -10,11 +10,11 @@ logger.stream = {
         let status = (message.split('<')[1].split('>')[0])
 
         // log with winston depending on response status
-        if(status >= 300){
-            logger.warn(message)
-        }
-        else if(status >= 400){
+        if(status >= 400){
             logger.error(message)
+        }
+        else if(status >= 300){
+            logger.warn(message)
         }
         else{
             logger.info(message);
