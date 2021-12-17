@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: manageblue-tasks-microservice
+  labels:
+    app: manageblue-tasks-microservice
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: manageblue-tasks-microservice
+  template:
+    metadata:
+      labels:
+        app: manageblue-tasks-microservice
+    spec:
+      containers:
+      - name: manageblue-tasks-microservice
+        image: ghcr.io/manageblue/manageblue-microservice-tasks:latest
+        ports:
+        - containerPort: 5000
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: manageblue-tasks-microservice-load-balancer
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 5000
+  selector:
+    app: manageblue-tasks-microservice

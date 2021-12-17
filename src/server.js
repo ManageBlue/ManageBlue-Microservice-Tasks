@@ -48,6 +48,7 @@ require("./models/db");
 require("./routes/tasks")(server);
 require("./routes/healthcheck")(server);
 require("./routes/metrics")(server);
+require("./routes/readiness")(server);
 
 server.get("/", (req, res) => {
     res.json({ message: "Server is running!" });
