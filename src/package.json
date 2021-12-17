@@ -29,6 +29,7 @@
     "winston": "^3.3.3"
   },
   "devDependencies": {
+    "axios": "^0.24.0",
     "swagger-jsdoc": "^6.1.0"
   }
 }

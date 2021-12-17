@@ -31,6 +31,11 @@ const healthSucc = {
                     reason: ""
                 },
                 {
+                    name: "Consul connection",
+                    outcome: "UP",
+                    reason: ""
+                },
+                {
                     name: "Simulation",
                     outcome: "UP",
                     reason: ""
@@ -64,6 +69,11 @@ const healthFail = {
         example: [
             {
                 name: "MongoDB connection",
+                outcome: "DOWN",
+                reason: "Not connected"
+            },
+            {
+                name: "Consul connection",
                 outcome: "DOWN",
                 reason: "Not connected"
             },
