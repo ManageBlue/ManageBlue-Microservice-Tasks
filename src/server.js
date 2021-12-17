@@ -4,9 +4,27 @@ const cors = require("cors");
 const server = express();
 const config = require('./config/config')
 
-// TODO: env ali config
 const port = config.port
 const url = config.url
+
+//----------------------------------------------------------------------------------------------------------------------
+// swagger
+
+const swaggerUi = require('swagger-ui-express');
+const swaggerJsdoc = require("swagger-jsdoc");
+
+const apiDocumentation = require('./docs/apidocs');
+const swaggerOptions = {
+    swaggerOptions: {
+        tryItOutEnabled: false,
+        supportedSubmitMethods: [''],
+    },
+};
+//const swaggerDocument = swaggerJsdoc(apiDocumentation);
+
+server.use('/openapi', swaggerUi.serve, swaggerUi.setup(apiDocumentation, swaggerOptions));
+
+
 //----------------------------------------------------------------------------------------------------------------------
 
 

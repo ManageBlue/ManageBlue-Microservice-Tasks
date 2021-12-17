@@ -22,6 +22,10 @@
     "mongo": "^0.1.0",
     "mongod": "^2.0.0",
     "mongoose": "^6.0.8",
-    "prom-client": "^14.0.1"
+    "prom-client": "^14.0.1",
+    "swagger-ui-express": "^4.3.0"
+  },
+  "devDependencies": {
+    "swagger-jsdoc": "^6.1.0"
   }
 }
