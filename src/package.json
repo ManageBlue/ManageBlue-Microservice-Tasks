@@ -4,7 +4,7 @@
   "description": "Backend Service for the ManageBlue App.",
   "main": "server.js",
   "scripts": {
-    "test": "./test.js"
+    "test": "jest --coverage"
   },
   "repository": {
     "type": "git",
@@ -21,17 +21,22 @@
     "consul": "^0.40.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "jest": "^27.4.5",
     "jsonwebtoken": "^8.5.1",
     "mongo": "^0.1.0",
     "mongod": "^2.0.0",
     "mongoose": "^6.0.8",
     "morgan": "^1.10.0",
     "prom-client": "^14.0.1",
+    "supertest": "^6.1.6",
     "swagger-ui-express": "^4.3.0",
     "winston": "^3.3.3"
   },
   "devDependencies": {
     "axios": "^0.24.0",
     "swagger-jsdoc": "^6.1.0"
+  },
+  "jest": {
+    "testEnvironment": "node"
   }
 }
