@@ -32,6 +32,8 @@ server.use('/openapi', swaggerUi.serve, swaggerUi.setup(apiDocumentation, swagge
 const logging = require('./middlewares/morgan_logger')
 server.use(logging)
 
+const logger = require('./middlewares/winston_logger')
+logger.info("Server logging started")
 //----------------------------------------------------------------------------------------------------------------------
 
 
@@ -60,6 +62,7 @@ require("./routes/readiness")(server);
 server.get("/", (req, res) => {
     res.json({ message: "Server is running!" });
 });
+
 
 
 /**
