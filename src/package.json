@@ -4,7 +4,7 @@
   "description": "Backend Service for the ManageBlue App.",
   "main": "server.js",
   "scripts": {
-    "test": "test.js"
+    "test": "./test.js"
   },
   "repository": {
     "type": "git",
