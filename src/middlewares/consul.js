@@ -1,4 +1,7 @@
 const consul = require('consul')({host:"34.159.202.70", port:80, promisify: true});
+const mongoose = require('mongoose');
+const logger = require('./winston_logger')
+
 
 let watchDB = consul.watch({
     method: consul.kv.get,
@@ -9,11 +12,25 @@ let dbURI
 
 watchDB.on('change', function(data, res) {
     try {
-        dbURI = data.Value
-        console.log(dbURI)
+        dbURI = data.Value.replace(/['"]+/g, '')
+
+        logger.info(`dbURI changed to ${dbURI} on consul`)
+
+        mongoose.disconnect().then(() => {
+            mongoose.connect(dbURI, {
+                useNewUrlParser: true,
+                // TODO: check
+                // useCreateIndex: true,
+                // useUnifiedTopology: true,
+                // useFindAndModify: false,
+            }).catch((err) => {
+                logger.error(`dbURI change on consul error - ${err}`)
+            });
+        })
+
     }
     catch (e){
-        console.log(e)
+        logger.error(`dbURI change on consul error - ${e}`)
     }
 });
 

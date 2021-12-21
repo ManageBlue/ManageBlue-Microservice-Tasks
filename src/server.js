@@ -4,6 +4,7 @@ const cors = require("cors");
 const server = express();
 const config = require('./config/config')
 
+
 const port = config.port
 const url = config.url
 
@@ -24,6 +25,12 @@ const swaggerOptions = {
 
 server.use('/openapi', swaggerUi.serve, swaggerUi.setup(apiDocumentation, swaggerOptions));
 
+
+//----------------------------------------------------------------------------------------------------------------------
+
+// attach morgan logging to express
+const logging = require('./middlewares/morgan_logger')
+server.use(logging)
 
 //----------------------------------------------------------------------------------------------------------------------
 
