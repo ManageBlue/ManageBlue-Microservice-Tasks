@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "Backend Service for the ManageBlue App.",
   "main": "server.js",
-  "scripts": {},
+  "scripts": {
+    "test": "test.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ManageBlue/ManageBlue-Backend.git"
