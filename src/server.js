@@ -59,8 +59,8 @@ require("./routes/healthcheck")(server);
 require("./routes/metrics")(server);
 require("./routes/readiness")(server);
 
-server.get("/", (req, res) => {
-    res.json({ message: "Server is running!" });
+server.get("/tasks", (req, res) => {
+    res.json({ message: "Tasks server is running!" });
 });
 
 
