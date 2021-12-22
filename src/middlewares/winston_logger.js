@@ -1,15 +1,20 @@
 const winston = require('winston');
+const WinstonLogStash = require('winston3-logstash-transport');
 
 const logConfiguration = {
     'transports': [
-        new winston.transports.Console()
+        new winston.transports.Console(),
+        /*new winston.transports.Http({
+            host: "b3935fa5-8747-4ea5-8e14-086132e5aa66-ls.logit.io",
+            port: "30201",
+        })*/
     ],
     format: winston.format.combine(
         winston.format.timestamp({
             format: 'YYYY-MM-DD HH:mm:ss',
         }),
         winston.format.printf((info) => {
-            let logData = { ...info };
+            let logData = {...info};
             if (info.error instanceof Error) {
                 logData.error = {
                     message: info.error.message,
@@ -24,5 +29,10 @@ const logConfiguration = {
 
 
 const logger = winston.createLogger(logConfiguration);
+logger.add(new WinstonLogStash({
+    mode: 'udp',
+    host: 'b3935fa5-8747-4ea5-8e14-086132e5aa66-ls.logit.io',
+    port: 30203
+}))
 
 module.exports = logger
