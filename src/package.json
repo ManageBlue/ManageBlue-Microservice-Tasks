@@ -35,9 +35,7 @@
     "axios": "^0.24.0",
     "swagger-jsdoc": "^6.1.0"
   },
-  "devDependencies": {
-
-  },
+  "devDependencies": {},
   "jest": {
     "testEnvironment": "node"
   }
