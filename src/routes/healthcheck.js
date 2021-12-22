@@ -17,5 +17,5 @@ module.exports = healthRouter => {
     // Simulate bad health
     router.post("/simulate", healthController.simulate)
 
-    healthRouter.use('/health', router);
+    healthRouter.use('/tasks/health', router);
 };

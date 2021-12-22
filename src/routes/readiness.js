@@ -17,5 +17,5 @@ module.exports = readinessRouter => {
         })
     })
 
-    readinessRouter.use('/ready', router);
+    readinessRouter.use('/tasks/ready', router);
 };

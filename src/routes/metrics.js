@@ -14,5 +14,5 @@ module.exports = metricsRouter => {
     // Return metrics
     router.get("/", metricsController.return)
 
-    metricsRouter.use('/metrics', router);
+    metricsRouter.use('/tasks/metrics', router);
 };
