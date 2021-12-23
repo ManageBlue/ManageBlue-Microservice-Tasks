@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "Backend Service for the ManageBlue App.",
   "main": "server.js",
-  "scripts": {},
+  "scripts": {
+    "test": "jest --coverage"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ManageBlue/ManageBlue-Backend.git"
@@ -19,17 +21,22 @@
     "consul": "^0.40.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "jest": "^27.4.5",
     "jsonwebtoken": "^8.5.1",
     "mongo": "^0.1.0",
     "mongod": "^2.0.0",
     "mongoose": "^6.0.8",
     "morgan": "^1.10.0",
     "prom-client": "^14.0.1",
+    "supertest": "^6.1.6",
     "swagger-ui-express": "^4.3.0",
-    "winston": "^3.3.3"
-  },
-  "devDependencies": {
+    "winston": "^3.3.3",
+    "winston3-logstash-transport": "^1.2.3",
     "axios": "^0.24.0",
     "swagger-jsdoc": "^6.1.0"
+  },
+  "devDependencies": {},
+  "jest": {
+    "testEnvironment": "node"
   }
 }
