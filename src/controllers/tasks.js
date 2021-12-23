@@ -295,8 +295,8 @@ exports.deleteProjectTasks = (req, res) => {
     Task.deleteMany({project: req.params.id})
         .then(tasks => {
             if (tasks.deletedCount === 0) {
-                return res.status(404).send({
-                    message: `No tasks with selected project ID!`
+                return res.status(200).send({
+                    message: `No tasks to delete`
                 });
             }
             else {
