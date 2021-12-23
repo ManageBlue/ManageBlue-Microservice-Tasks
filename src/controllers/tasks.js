@@ -299,7 +299,9 @@ exports.deleteProjectTasks = (req, res) => {
                     message: `No tasks with selected project ID!`
                 });
             }
-            res.send({message: "Tasks deleted!"});
+            else {
+                res.send({message: "Tasks deleted!"});
+            }
         })
         .catch(error => {
             res.status(500).send({
