@@ -54,16 +54,16 @@ const apiDocumentation = {
         "/metrics": {
             get: getMetrics,
         },
-        "/api/v1/tasks": {
+        "/tasks/api/v1": {
             get: getTasks,
             post: createTask,
         },
-        "/api/v1/tasks/{id}": {
+        "/tasks/api/v1/{id}": {
             get: getTask,
             put: updateTask,
             delete: deleteTask,
         },
-        "/api/v1/tasks/deleteProject/{id}": {
+        "/tasks/api/v1/deleteProject/{id}": {
             delete: deleteProjectTasks,
         }
 
