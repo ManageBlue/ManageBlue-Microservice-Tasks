@@ -32,7 +32,7 @@ const logger = winston.createLogger(logConfiguration);
 logger.add(new WinstonLogStash({
     mode: 'udp',
     host: '554c0f1a-d975-405d-bb0b-646c1c29cc22-ls.logit.io',
-    port: 30203
+    port: 14002
 }))
 
 module.exports = logger
