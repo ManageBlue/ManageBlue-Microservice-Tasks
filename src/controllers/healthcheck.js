@@ -45,6 +45,16 @@ exports.health = (req, res) => {
                     reason: consulStatus === 200 ? '' : 'Not connected'
                 },
                 {
+                    name: 'Reference connection',
+                    outcome: 'UP',
+                    reason: ''
+                },
+                {
+                    name: 'Auth Microservice connection',
+                    outcome: 'UP',
+                    reason: ''
+                },
+                {
                     name: 'Simulation',
                     outcome: simulationStatus === 200 ? 'UP' : 'DOWN',
                     reason: simulationStatus === 200 ? '' : 'Simulating health problem'
